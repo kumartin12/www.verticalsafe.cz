@@ -91,10 +91,14 @@ section{padding:100px 0}
 .gi.wide{grid-column:span 2;aspect-ratio:2/1}
 .gi img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
 .gi:hover img{transform:scale(1.05)}
-dialog#lb{border:0;background:transparent;padding:0;max-width:96vw;max-height:94vh;overflow:visible}
+dialog#lb{border:0;background:transparent;padding:0;margin:auto;max-width:96vw;max-height:94vh;overflow:visible;position:fixed;inset:0;width:fit-content;height:fit-content}
 dialog#lb::backdrop{background:rgba(0,0,0,.88)}
-dialog#lb img{max-width:96vw;max-height:90vh;border-radius:8px;margin:auto}
-dialog#lb button{position:absolute;top:-14px;right:-6px;width:40px;height:40px;border-radius:50%;border:0;background:var(--y);font-size:1.6rem;cursor:pointer;line-height:1}
+dialog#lb img{display:block;max-width:92vw;max-height:88vh;width:auto;height:auto;border-radius:8px}
+dialog#lb .x{position:absolute;top:-16px;right:-16px;width:40px;height:40px;border-radius:50%;border:0;background:var(--y);font-size:1.6rem;cursor:pointer;line-height:1}
+dialog#lb .nv{position:fixed;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,216,0,.95);font-size:2rem;line-height:1;cursor:pointer;padding-bottom:4px}
+dialog#lb .pv{left:14px}dialog#lb .nx{right:14px}
+dialog#lb .ct{position:fixed;bottom:16px;left:0;right:0;text-align:center;color:#ddd;font-size:.9rem}
+@media(max-width:600px){dialog#lb .nv{width:40px;height:40px;font-size:1.6rem}dialog#lb .pv{left:6px}dialog#lb .nx{right:6px}}
 /* process */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
 .step{border-top:4px solid var(--y);padding-top:18px}
@@ -266,7 +270,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div class="gallery"><button class="gi wide" data-src="img/p760.jpg"><img src="img/p760.jpg" alt="Renovace střechy na bytovém domě" loading="lazy"></button><button class="gi" data-src="img/p684.jpg"><img src="img/p684.jpg" alt="Kácení stromu z lan" loading="lazy"></button><button class="gi" data-src="img/p778.jpg"><img src="img/p778.jpg" alt="Střecha před čištěním" loading="lazy"></button><button class="gi wide" data-src="img/p828.jpg"><img src="img/p828.jpg" alt="Renovace tašková střecha, koláž" loading="lazy"></button><button class="gi" data-src="img/p703.jpg"><img src="img/p703.jpg" alt="Arborista v koruně" loading="lazy"></button><button class="gi" data-src="img/p853.jpg"><img src="img/p853.jpg" alt="Kácení s jeřábem" loading="lazy"></button><button class="gi" data-src="img/p645.jpg"><img src="img/p645.jpg" alt="Pohled z věže" loading="lazy"></button><button class="gi" data-src="img/p818.jpg"><img src="img/p818.jpg" alt="Plechová střecha po nátěru" loading="lazy"></button><button class="gi" data-src="img/p559.jpg"><img src="img/p559.jpg" alt="Věž s žebříkem" loading="lazy"></button><button class="gi" data-src="img/p594.jpg"><img src="img/p594.jpg" alt="Hroty proti ptákům v okně" loading="lazy"></button><button class="gi" data-src="img/p902.jpg"><img src="img/p902.jpg" alt="Stromolezec ve stromě" loading="lazy"></button><button class="gi" data-src="img/p566.jpg"><img src="img/p566.jpg" alt="Průmyslové čištění" loading="lazy"></button></div>
   </div>
 </section>
-<dialog id="lb"><img alt=""><button aria-label="Zavřít">×</button></dialog>
+<dialog id="lb"><img alt=""><button class="x" aria-label="Zavřít">×</button><button class="nv pv" aria-label="Předchozí">‹</button><button class="nv nx" aria-label="Další">›</button><span class="ct"></span></dialog>
 
 <div class="band">
   <div class="wrap">
@@ -306,9 +310,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 const b=document.querySelector('.burger'),m=document.getElementById('menu');
 b.addEventListener('click',()=>{const o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
 m.addEventListener('click',e=>{if(e.target.tagName==='A'){m.classList.remove('open');b.setAttribute('aria-expanded',false)}});
-const lb=document.getElementById('lb'),li=lb.querySelector('img');
-document.querySelectorAll('.gi').forEach(g=>g.addEventListener('click',()=>{li.src=g.dataset.src;li.alt=g.querySelector('img').alt;lb.showModal()}));
-lb.addEventListener('click',()=>lb.close());
+const lb=document.getElementById('lb'),li=lb.querySelector('img'),ct=lb.querySelector('.ct'),gs=[...document.querySelectorAll('.gi')];
+let cur=0;
+function show(i){cur=(i+gs.length)%gs.length;const g=gs[cur];li.src=g.dataset.src;li.alt=g.querySelector('img').alt;ct.textContent=(cur+1)+' / '+gs.length;
+  gs[(cur+1)%gs.length].dataset.src&&(new Image().src=gs[(cur+1)%gs.length].dataset.src)}
+gs.forEach((g,i)=>g.addEventListener('click',()=>{show(i);lb.showModal()}));
+lb.querySelector('.pv').addEventListener('click',e=>{e.stopPropagation();show(cur-1)});
+lb.querySelector('.nx').addEventListener('click',e=>{e.stopPropagation();show(cur+1)});
+lb.querySelector('.x').addEventListener('click',()=>lb.close());
+li.addEventListener('click',e=>{e.stopPropagation();show(cur+1)});
+lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});
+lb.addEventListener('keydown',e=>{if(e.key==='ArrowRight')show(cur+1);if(e.key==='ArrowLeft')show(cur-1)});
+let tx=null;lb.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+lb.addEventListener('touchend',e=>{if(tx===null)return;const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)show(cur+(d<0?1:-1));tx=null});
 </script>
 </body>
 </html>
