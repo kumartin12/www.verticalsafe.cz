@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vertical Safe – výškové práce Domažlice a okolí</title>
+<meta name="description" content="Výškové a arboristické práce, renovace a mytí střech, rizikové kácení, revize OOPP. Domažlice a okolí. Práce na lanech i z plošin.">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --y:#ffd800; --y-d:#e6c200; --ink:#111; --ink2:#1c1c1c; --mut:#5f5f5f; --bg:#fff; --soft:#f5f4ef; --line:#e4e2da;
+  --r:14px;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:"Barlow Condensed",Impact,sans-serif;text-transform:uppercase;line-height:1.02;letter-spacing:.01em}
+h2{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800}
+h3{font-size:1.5rem;font-weight:700}
+.eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.95rem;color:var(--mut);display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.eyebrow::before{content:"";width:28px;height:4px;background:var(--y)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid transparent;transition:.2s;font-size:1rem}
+.btn-y{background:var(--y);color:#000}.btn-y:hover{background:var(--y-d);transform:translateY(-2px)}
+.btn-o{border-color:#fff;color:#fff}.btn-o:hover{background:#fff;color:#000}
+
+/* header */
+header{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(17,17,17,.86);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:"Barlow Condensed";font-weight:800;font-size:1.5rem;text-transform:uppercase;line-height:.9}
+.logo img{height:44px;width:auto;border-radius:6px}
+.logo i{width:38px;height:38px;border-radius:50%;background:var(--y);display:grid;place-items:center;flex:none}
+.logo i svg{width:20px;height:20px}
+nav ul{list-style:none;display:flex;gap:26px;padding:0}
+nav a{color:#ddd;text-decoration:none;font-size:.95rem;font-weight:500}
+nav a:hover{color:var(--y)}
+.call{background:var(--y);color:#000!important;padding:9px 18px;border-radius:999px;font-weight:600}
+.burger{display:none;background:none;border:0;color:#fff;width:44px;height:44px;cursor:pointer}
+.burger span,.burger span::before,.burger span::after{display:block;width:24px;height:2px;background:#fff;position:relative;margin:auto;content:""}
+.burger span::before{position:absolute;top:-8px}.burger span::after{position:absolute;top:8px}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;background:#000 url(img/p414_d.jpg) center/cover;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.35) 40%,rgba(0,0,0,.88));z-index:-1}
+.hero .wrap{padding:140px 0 70px}
+.hero h1{font-size:clamp(3.4rem,11vw,8rem);font-weight:800;max-width:11ch}
+.hero h1 em{font-style:normal;color:var(--y)}
+.hero p{max-width:540px;font-size:1.15rem;color:#e6e6e6;margin:22px 0 32px}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap}
+.stats{display:flex;gap:44px;flex-wrap:wrap;margin-top:56px;padding-top:28px;border-top:1px solid rgba(255,255,255,.2)}
+.stats b{display:block;font-family:"Barlow Condensed";font-size:2.6rem;color:var(--y);line-height:1}
+.stats span{font-size:.9rem;color:#ccc}
+
+section{padding:100px 0}
+.head{max-width:680px;margin-bottom:48px}
+.head p{color:var(--mut);margin-top:14px;font-size:1.05rem}
+
+/* services */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--soft);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:.25s;border:1px solid transparent}
+.card:hover{transform:translateY(-4px);border-color:var(--y);box-shadow:0 16px 36px -18px rgba(0,0,0,.3)}
+.card img{aspect-ratio:16/10;object-fit:cover;width:100%}
+.card .ic{aspect-ratio:16/10;background:var(--ink);display:grid;place-items:center}
+.card .ic svg{width:56px;height:56px;stroke:var(--y);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.card div.b{padding:22px 24px 26px}
+.card p{color:var(--mut);font-size:.96rem;margin-top:8px}
+
+/* feature / about */
+.dark{background:var(--ink);color:#fff}
+.dark .eyebrow{color:#aaa}
+.split{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+.split img{border-radius:var(--r);width:100%;aspect-ratio:4/3;object-fit:cover}
+.split p{color:#ccc;margin-top:16px}
+.checks{list-style:none;padding:0;margin-top:22px;display:grid;gap:10px}
+.checks li{padding-left:34px;position:relative}
+.checks li::before{content:"";position:absolute;left:0;top:4px;width:20px;height:20px;border-radius:50%;background:var(--y) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-6.5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+
+.light .split p{color:var(--mut)}
+.ba{position:relative;border-radius:var(--r);overflow:hidden}
+.ba img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.ba span{position:absolute;bottom:14px;background:#000;color:#fff;padding:4px 12px;border-radius:99px;font-size:.8rem;font-weight:600}
+.ba .l{left:14px}.ba .r{right:14px;background:var(--y);color:#000}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.step{border-top:4px solid var(--y);padding-top:18px}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:"Barlow Condensed";font-size:2.6rem;font-weight:800;color:var(--line)}
+.step p{color:var(--mut);font-size:.95rem;margin-top:6px}
+
+/* price band */
+.band{background:var(--y);padding:56px 0}
+.band .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.band h2{font-size:clamp(1.8rem,4vw,2.6rem)}
+.band .btn{background:#000;color:#fff}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.contact dl{display:grid;gap:18px;margin-top:28px}
+.contact dt{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:#999}
+.contact dd{font-size:1.15rem;font-weight:500}
+.contact a{text-decoration:none}.contact a:hover{color:var(--y)}
+.map{border-radius:var(--r);overflow:hidden;min-height:340px;background:#222}
+.map iframe{width:100%;height:100%;min-height:340px;border:0;filter:grayscale(.6) contrast(1.05)}
+
+footer{background:#000;color:#888;font-size:.85rem;padding:30px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brands{display:flex;gap:30px;flex-wrap:wrap;font-family:"Barlow Condensed";font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#aaa;font-size:1.15rem;margin-top:26px}
+
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr 1fr}
+  .split,.contact{grid-template-columns:1fr;gap:36px}
+  .steps{grid-template-columns:1fr 1fr}
+  section{padding:70px 0}
+  .burger{display:block}
+  nav{position:absolute;top:68px;left:0;right:0;background:#111;display:none;padding:12px 20px 22px}
+  nav.open{display:block}
+  nav ul{flex-direction:column;gap:4px}
+  nav a{display:block;padding:12px 0}
+  .call{display:inline-block;margin-top:8px}
+}
+@media(max-width:560px){
+  .grid,.steps{grid-template-columns:1fr}
+  .stats{gap:28px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="Vertical Safe – výškové práce Domažlice"><img src="img/logo-full.jpg" alt="Vertical Safe – výškové práce Domažlice" width="93" height="44"></a>
+    <button class="burger" aria-label="Menu" aria-expanded="false"><span></span></button>
+    <nav id="menu">
+      <ul>
+        <li><a href="#sluzby">Služby</a></li>
+        <li><a href="#strechy">Střechy</a></li>
+        <li><a href="#revize">Revize OOPP</a></li>
+        <li><a href="#onas">O nás</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a class="call" href="tel:+420775283744">+420 775 283 744</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" style="padding:0">
+  <div class="wrap">
+    <div class="eyebrow" style="color:#ddd">Domažlice a okolí · od 90. let</div>
+    <h1>Práce ve výškách. <em>Bezpečně.</em></h1>
+    <p>Renovace a mytí střech, rizikové kácení, průmyslové haly, výškové mytí oken a revize OOPP. Lezeme z lan, plošin i žebříků.</p>
+    <div class="cta">
+      <a class="btn btn-y" href="#kontakt">Nezávazná poptávka</a>
+      <a class="btn btn-o" href="#sluzby">Naše služby</a>
+    </div>
+    <div class="stats">
+      <div><b>25+</b><span>let zkušeností</span></div>
+      <div><b>100+</b><span>spokojených zákazníků</span></div>
+      <div><b>+20 let</b><span>životnost střechy po renovaci</span></div>
+      <div><b>10 let</b><span>záruka na pásky Rofas</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="sluzby">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Co děláme</div>
+      <h2>Služby pro domy, haly i firmy</h2>
+      <p>Cenu na místě vždy řekneme předem a dodržíme ji.</p>
+    </div>
+    <div class="grid">
+      <article class="card"><img src="img/p521_d.jpg" alt="Střecha před a po čištění" loading="lazy"><div class="b"><h3>Renovace střech</h3><p>Eternit, plech, taška. Renovační nátěr prodlouží životnost krytiny až o 20 let, bez rozkrývání.</p></div></article>
+      <article class="card"><img src="img/p490_d.jpg" alt="Taška se mechem" loading="lazy"><div class="b"><h3>Čištění a mytí střech</h3><p>Studená i horká voda pod tlakem, nano ochrana a mechostopy. Postup volíme podle krytiny.</p></div></article>
+      <article class="card"><div class="ic"><svg viewBox="0 0 48 48"><path d="M24 44V26M24 26c-8 0-14-5-14-12 0-5 4-9 9-9 2 0 4 1 5 2 1-1 3-2 5-2 5 0 9 4 9 9 0 7-6 12-14 12z"/></svg></div><div class="b"><h3>Rizikové kácení</h3><p>Redukce korun, bezpečnostní řezy a odborné posudky. Členové ISA, arboristé-stromolezci.</p></div></article>
+      <article class="card"><div class="ic"><svg viewBox="0 0 48 48"><path d="M4 42V20l12-8v8l12-8v8l12-8v30zM12 42v-8h6v8M24 42v-8h6v8"/></svg></div><div class="b"><h3>Průmyslové haly</h3><p>Čištění, malování, nátěry ocelových konstrukcí. Pracujeme i o víkendech a v nočních směnách.</p></div></article>
+      <article class="card"><img src="img/p455_d.jpg" alt="Hroty proti ptákům na římse" loading="lazy"><div class="b"><h3>Ochrana proti ptactvu</h3><p>Systémy na římsy, atiky, parapety a okapy. Za sebou kilometry instalací.</p></div></article>
+      <article class="card"><div class="ic"><svg viewBox="0 0 48 48"><rect x="6" y="6" width="16" height="36"/><rect x="26" y="6" width="16" height="36"/><path d="M22 6v36M26 6v36" stroke-dasharray="3 3"/></svg></div><div class="b"><h3>Mezipanelové spáry</h3><p>Proti tepelným ztrátám, zatékání a plísním. Fasádní pásky Rofas s 10letou zárukou.</p></div></article>
+      <article class="card"><img src="img/p378_d.jpg" alt="Mytí fasády z plošiny" loading="lazy"><div class="b"><h3>Mytí oken a fasád</h3><p>Výškové mytí oken a čištění skel z lan, nůžkových i přívěsných plošin.</p></div></article>
+      <article class="card"><div class="ic"><svg viewBox="0 0 48 48"><path d="M24 4l16 6v12c0 11-7 18-16 22C15 40 8 33 8 22V10zM17 24l5 5 9-10"/></svg></div><div class="b"><h3>Revize a školení</h3><p>Periodické prohlídky OOPP proti pádu dle ČSN EN 365, často přímo u vás v terénu.</p></div></article>
+      <article class="card"><div class="ic"><svg viewBox="0 0 48 48"><path d="M4 42l14-24 8 12 6-8 12 20zM34 10a3 3 0 100-.1"/></svg></div><div class="b"><h3>Sport &amp; outdoor</h3><p>Lezecká a boulderingová stěna, kurzy lezení a půjčovna vybavení. Více na dolez.cz.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="strechy" class="light" style="background:var(--soft)">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Renovace střech</div>
+      <h2>Jako nová. Za zlomek ceny nové krytiny.</h2>
+      <p>Renovační nátěr aplikujeme i na sto let staré krytiny. Pokud není v dezolátním stavu, prodloužíme její životnost zhruba o 20 let a výrazně zlepšíme vzhled. S možností opakované aplikace.</p>
+      <ul class="checks">
+        <li>Ochrana a delší životnost krytiny</li>
+        <li>Nový vzhled bez rozkrývání střechy</li>
+        <li>Lehké hliníkové žebříky, lana i přívěsné plošiny</li>
+        <li>Eternit, plech, taška, hydroizolace, hydrofobizace, nano nástřiky</li>
+      </ul>
+    </div>
+    <div class="ba"><img src="img/p521_d.jpg" alt="Polovina střechy vyčištěná, polovina původní" loading="lazy"><span class="l">Před</span><span class="r">Po</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head"><div class="eyebrow">Jak to probíhá</div><h2>Od schůzky po úklid</h2></div>
+    <div class="steps">
+      <div class="step"><h3>Schůzka</h3><p>Nezávazně se podíváme na místě a probereme přístup.</p></div>
+      <div class="step"><h3>Cena</h3><p>Pevná cena předem. Ovlivňuje ji přístup, technologie a rozsah.</p></div>
+      <div class="step"><h3>Realizace</h3><p>Pracujeme tak, aby nenarušila váš provoz. Vše zakryjeme.</p></div>
+      <div class="step"><h3>Úklid</h3><p>Po práci vždy uklidíme. Je to samozřejmost.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="revize" class="dark">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Revize OOPP</div>
+      <h2>Kontrola úvazů, lan a přileb</h2>
+      <p>Máme oprávnění dle ČSN EN 365. Revizujeme Singing Rock, Lanex, Petzl, Alpin Bupex, Kask, Kong, Grivel, Tendon a Raveltik. Inspektoři jezdí i k vám, takže nic nebalíte ani neposíláte.</p>
+      <ul class="checks">
+        <li>Celotělový úvazek pracovní od 200 Kč, sportovní 160 Kč</li>
+        <li>Bederní úvazek pracovní 150 Kč, sportovní 120 Kč</li>
+        <li>Roční revize zdarma na vše, co u nás koupíte</li>
+      </ul>
+      <p style="margin-top:28px"><a class="btn btn-y" href="#kontakt">Objednat revizi</a></p>
+    </div>
+    <img src="img/p414_d.jpg" alt="Lezci na lanech u prosklené fasády" loading="lazy">
+  </div>
+</section>
+
+<section id="onas">
+  <div class="wrap split" style="grid-template-columns:1fr 1fr">
+    <div>
+      <div class="eyebrow">O nás</div>
+      <h2>Parta horolezců, která z toho udělala firmu</h2>
+    </div>
+    <div>
+      <p style="color:var(--mut)">Ve výškových pracích se pohybujeme od konce 90. let. Začínali jsme jako kamarádi horolezci, kteří využili zkušenosti z hor a skal. S přibývajícími zakázkami jsme se profesionalizovali a dnes poskytujeme kompletní servis pro pohyb ve výškách.</p>
+      <p style="color:var(--mut);margin-top:14px">V zákaznickém centru si můžete sáhnout na vzorky renovací střech, najdete tu revizní středisko, lezeckou a boulderingovou stěnu a vybavení Singing Rock k vyzkoušení nebo koupi. Tým tvoří stálí profesionálové a externisté z řad řemeslníků, záchranářů a hasičů.</p>
+      <div class="brands"><span>Singing Rock</span><span>Lanex</span><span>Petzl</span><span>Grivel</span><span>Kask</span><span>MSR</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="wrap">
+    <h2>Potřebujete cenu? Ozvěte se, přijedeme se podívat.</h2>
+    <a class="btn" href="tel:+420775283744">Volat +420 775 283 744</a>
+  </div>
+</div>
+
+<section id="kontakt" class="dark">
+  <div class="wrap contact">
+    <div>
+      <div class="eyebrow">Kontakt</div>
+      <h2>Napište nebo zavolejte</h2>
+      <dl>
+        <div><dt>Telefon</dt><dd><a href="tel:+420775283744">+420 775 283 744</a></dd></div>
+        <div><dt>E-mail</dt><dd><a href="mailto:info@verticalsafe.cz">info@verticalsafe.cz</a></dd></div>
+        <div><dt>Adresa</dt><dd>Vertical Safe s.r.o.<br>Husova 31, 344 01 Domažlice</dd></div>
+        <div><dt>Firemní údaje</dt><dd style="font-size:.95rem;color:#bbb">IČ 29092205 · DIČ CZ29092205<br>Účet 196375807/0600</dd></div>
+      </dl>
+    </div>
+    <div class="map">
+      <iframe title="Mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=12.9300%2C49.4370%2C12.9410%2C49.4450&amp;layer=mapnik&amp;marker=49.440979%2C12.935599"></iframe>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Vertical Safe s.r.o.</span>
+    <span>Výškové práce Domažlice</span>
+    <span>Vytvořil <a href="https://pckucera.cz" target="_blank" rel="noopener" style="color:var(--y);text-decoration:none">pckucera.cz</a></span>
+  </div>
+</footer>
+
+<script>
+const b=document.querySelector('.burger'),m=document.getElementById('menu');
+b.addEventListener('click',()=>{const o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+m.addEventListener('click',e=>{if(e.target.tagName==='A'){m.classList.remove('open');b.setAttribute('aria-expanded',false)}});
+</script>
+</body>
+</html>
