@@ -86,6 +86,15 @@ section{padding:100px 0}
 .ba span{position:absolute;bottom:14px;background:#000;color:#fff;padding:4px 12px;border-radius:99px;font-size:.8rem;font-weight:600}
 .ba .l{left:14px}.ba .r{right:14px;background:var(--y);color:#000}
 
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;grid-auto-flow:dense}
+.gi{border:0;padding:0;border-radius:12px;overflow:hidden;cursor:zoom-in;aspect-ratio:1;background:#ddd;position:relative}
+.gi.wide{grid-column:span 2;aspect-ratio:2/1}
+.gi img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.gi:hover img{transform:scale(1.05)}
+dialog#lb{border:0;background:transparent;padding:0;max-width:96vw;max-height:94vh;overflow:visible}
+dialog#lb::backdrop{background:rgba(0,0,0,.88)}
+dialog#lb img{max-width:96vw;max-height:90vh;border-radius:8px;margin:auto}
+dialog#lb button{position:absolute;top:-14px;right:-6px;width:40px;height:40px;border-radius:50%;border:0;background:var(--y);font-size:1.6rem;cursor:pointer;line-height:1}
 /* process */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
 .step{border-top:4px solid var(--y);padding-top:18px}
@@ -123,6 +132,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   nav a{display:block;padding:12px 0}
   .call{display:inline-block;margin-top:8px}
 }
+@media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){
   .grid,.steps{grid-template-columns:1fr}
   .stats{gap:28px}
@@ -140,6 +150,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <ul>
         <li><a href="#sluzby">Služby</a></li>
         <li><a href="#strechy">Střechy</a></li>
+        <li><a href="#realizace">Realizace</a></li>
         <li><a href="#revize">Revize OOPP</a></li>
         <li><a href="#onas">O nás</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
@@ -177,12 +188,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
     <div class="grid">
       <article class="card"><img src="img/p521_d.jpg" alt="Střecha před a po čištění" loading="lazy"><div class="b"><h3>Renovace střech</h3><p>Eternit, plech, taška. Renovační nátěr prodlouží životnost krytiny až o 20 let, bez rozkrývání.</p></div></article>
-      <article class="card"><img src="img/p490_d.jpg" alt="Taška se mechem" loading="lazy"><div class="b"><h3>Čištění a mytí střech</h3><p>Studená i horká voda pod tlakem, nano ochrana a mechostopy. Postup volíme podle krytiny.</p></div></article>
-      <article class="card"><div class="ic"><svg viewBox="0 0 48 48"><path d="M24 44V26M24 26c-8 0-14-5-14-12 0-5 4-9 9-9 2 0 4 1 5 2 1-1 3-2 5-2 5 0 9 4 9 9 0 7-6 12-14 12z"/></svg></div><div class="b"><h3>Rizikové kácení</h3><p>Redukce korun, bezpečnostní řezy a odborné posudky. Členové ISA, arboristé-stromolezci.</p></div></article>
-      <article class="card"><div class="ic"><svg viewBox="0 0 48 48"><path d="M4 42V20l12-8v8l12-8v8l12-8v30zM12 42v-8h6v8M24 42v-8h6v8"/></svg></div><div class="b"><h3>Průmyslové haly</h3><p>Čištění, malování, nátěry ocelových konstrukcí. Pracujeme i o víkendech a v nočních směnách.</p></div></article>
+      <article class="card"><img src="img/p842.jpg" alt="Tašková střecha napůl vyčištěná" loading="lazy"><div class="b"><h3>Čištění a mytí střech</h3><p>Studená i horká voda pod tlakem, nano ochrana a mechostopy. Postup volíme podle krytiny.</p></div></article>
+      <article class="card"><img src="img/p728.jpg" alt="Arborista v koruně dubu" loading="lazy"><div class="b"><h3>Rizikové kácení</h3><p>Redukce korun, bezpečnostní řezy a odborné posudky. Členové ISA, arboristé-stromolezci.</p></div></article>
+      <article class="card"><img src="img/p573.jpg" alt="Práce v průmyslové hale" loading="lazy"><div class="b"><h3>Průmyslové haly</h3><p>Čištění, malování, nátěry ocelových konstrukcí. Pracujeme i o víkendech a v nočních směnách.</p></div></article>
       <article class="card"><img src="img/p455_d.jpg" alt="Hroty proti ptákům na římse" loading="lazy"><div class="b"><h3>Ochrana proti ptactvu</h3><p>Systémy na římsy, atiky, parapety a okapy. Za sebou kilometry instalací.</p></div></article>
-      <article class="card"><div class="ic"><svg viewBox="0 0 48 48"><rect x="6" y="6" width="16" height="36"/><rect x="26" y="6" width="16" height="36"/><path d="M22 6v36M26 6v36" stroke-dasharray="3 3"/></svg></div><div class="b"><h3>Mezipanelové spáry</h3><p>Proti tepelným ztrátám, zatékání a plísním. Fasádní pásky Rofas s 10letou zárukou.</p></div></article>
-      <article class="card"><img src="img/p378_d.jpg" alt="Mytí fasády z plošiny" loading="lazy"><div class="b"><h3>Mytí oken a fasád</h3><p>Výškové mytí oken a čištění skel z lan, nůžkových i přívěsných plošin.</p></div></article>
+      <article class="card"><img src="img/p587.jpg" alt="Panelový dům se zatmelenými spárami" loading="lazy"><div class="b"><h3>Mezipanelové spáry</h3><p>Proti tepelným ztrátám, zatékání a plísním. Fasádní pásky Rofas s 10letou zárukou.</p></div></article>
+      <article class="card"><img src="img/p610.jpg" alt="Nůžková plošina u prosklené fasády" loading="lazy"><div class="b"><h3>Mytí oken a fasád</h3><p>Výškové mytí oken a čištění skel z lan, nůžkových i přívěsných plošin.</p></div></article>
       <article class="card"><div class="ic"><svg viewBox="0 0 48 48"><path d="M24 4l16 6v12c0 11-7 18-16 22C15 40 8 33 8 22V10zM17 24l5 5 9-10"/></svg></div><div class="b"><h3>Revize a školení</h3><p>Periodické prohlídky OOPP proti pádu dle ČSN EN 365, často přímo u vás v terénu.</p></div></article>
       <article class="card"><div class="ic"><svg viewBox="0 0 48 48"><path d="M4 42l14-24 8 12 6-8 12 20zM34 10a3 3 0 100-.1"/></svg></div><div class="b"><h3>Sport &amp; outdoor</h3><p>Lezecká a boulderingová stěna, kurzy lezení a půjčovna vybavení. Více na dolez.cz.</p></div></article>
     </div>
@@ -231,7 +242,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       </ul>
       <p style="margin-top:28px"><a class="btn btn-y" href="#kontakt">Objednat revizi</a></p>
     </div>
-    <img src="img/p414_d.jpg" alt="Lezci na lanech u prosklené fasády" loading="lazy">
+    <img src="img/p664.jpg" alt="Vůz Vertical Safe na nádvoří zámku" loading="lazy">
   </div>
 </section>
 
@@ -248,6 +259,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
   </div>
 </section>
+
+<section id="realizace" style="background:var(--soft)">
+  <div class="wrap">
+    <div class="head"><div class="eyebrow">Realizace</div><h2>Z naší práce</h2><p>Střechy, stromy, haly i historické budovy. Klikněte na fotku pro zvětšení.</p></div>
+    <div class="gallery"><button class="gi wide" data-src="img/p760.jpg"><img src="img/p760.jpg" alt="Renovace střechy na bytovém domě" loading="lazy"></button><button class="gi" data-src="img/p684.jpg"><img src="img/p684.jpg" alt="Kácení stromu z lan" loading="lazy"></button><button class="gi" data-src="img/p778.jpg"><img src="img/p778.jpg" alt="Střecha před čištěním" loading="lazy"></button><button class="gi wide" data-src="img/p828.jpg"><img src="img/p828.jpg" alt="Renovace tašková střecha, koláž" loading="lazy"></button><button class="gi" data-src="img/p703.jpg"><img src="img/p703.jpg" alt="Arborista v koruně" loading="lazy"></button><button class="gi" data-src="img/p853.jpg"><img src="img/p853.jpg" alt="Kácení s jeřábem" loading="lazy"></button><button class="gi" data-src="img/p645.jpg"><img src="img/p645.jpg" alt="Pohled z věže" loading="lazy"></button><button class="gi" data-src="img/p818.jpg"><img src="img/p818.jpg" alt="Plechová střecha po nátěru" loading="lazy"></button><button class="gi" data-src="img/p559.jpg"><img src="img/p559.jpg" alt="Věž s žebříkem" loading="lazy"></button><button class="gi" data-src="img/p594.jpg"><img src="img/p594.jpg" alt="Hroty proti ptákům v okně" loading="lazy"></button><button class="gi" data-src="img/p902.jpg"><img src="img/p902.jpg" alt="Stromolezec ve stromě" loading="lazy"></button><button class="gi" data-src="img/p566.jpg"><img src="img/p566.jpg" alt="Průmyslové čištění" loading="lazy"></button></div>
+  </div>
+</section>
+<dialog id="lb"><img alt=""><button aria-label="Zavřít">×</button></dialog>
 
 <div class="band">
   <div class="wrap">
@@ -287,6 +306,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 const b=document.querySelector('.burger'),m=document.getElementById('menu');
 b.addEventListener('click',()=>{const o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
 m.addEventListener('click',e=>{if(e.target.tagName==='A'){m.classList.remove('open');b.setAttribute('aria-expanded',false)}});
+const lb=document.getElementById('lb'),li=lb.querySelector('img');
+document.querySelectorAll('.gi').forEach(g=>g.addEventListener('click',()=>{li.src=g.dataset.src;li.alt=g.querySelector('img').alt;lb.showModal()}));
+lb.addEventListener('click',()=>lb.close());
 </script>
 </body>
 </html>
